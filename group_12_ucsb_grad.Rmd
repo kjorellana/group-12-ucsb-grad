@@ -5,8 +5,8 @@ date: "11/17/2021"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=TRUE, warning= FALSE, message= FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning= FALSE, message= FALSE)
 
 library(tidyverse)
 library(here)
@@ -21,7 +21,11 @@ ucsb_grad <- read_csv(here("data", "ucsb_grad_data.csv"))
 ggplot(data= ucsb_grad, aes(x= year_abbr, y= domestic_enrollment)) +
   geom_col(aes(fill=ethnicity), position = "fill") +
   labs(x = "Year", 
-       y = "Domestic Enrollment Percentage" )
+       y = "Domestic Enrollment Percentage" ,
+       fill = "Ethnicity",
+       title = "Distribution (%) of Student Ethnicity Across Enrollment Years at UCSB") +
+  theme_minimal()
 
 ```
 
+**Figure 1.** Column graph showing the distribution of domestic graduate UCSB students based on ethnicity during the enrollment years 2008-2019
